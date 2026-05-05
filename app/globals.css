@@ -1,0 +1,122 @@
+:root {
+  /* 🎨 CORES BASE */
+  --color-bg: #0a0a0a;
+  --color-bg-secondary: #111111;
+
+  --color-text: #eaeaea;
+  --color-text-soft: #b3b3b3;
+
+  /* 🌈 NEON (destaque) */
+  --color-primary: #00f0ff;
+  --color-secondary: #8a2be2;
+  --color-accent: #00ff9f;
+
+  /* ✨ EFEITOS */
+  --glow-primary: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
+
+  --glow-secondary:
+    0 0 10px var(--color-secondary), 0 0 20px var(--color-secondary);
+
+  /* 📏 ESPAÇAMENTO */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+
+  /* 🔤 TIPOGRAFIA */
+  --font-title: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  scroll-snap-type: y proximity;
+  transition: opacity 0.3s ease;
+}
+
+section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  position: relative;
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-align: center;
+
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+
+  background: linear-gradient(90deg, #00d9ff, #7b2cff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  margin: 40px 0 60px;
+}
+
+/* LINHA DECORATIVA */
+.section-title::after {
+  content: "";
+  display: block;
+
+  width: 50px;
+  height: 2px;
+
+  margin: 12px auto 0;
+
+  background: linear-gradient(90deg, #00d9ff, #7b2cff);
+  border-radius: 10px;
+}
+
+.section-title::before {
+  content: attr(data-title);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: rgba(255, 255, 255, 0.05);
+  font-size: 3.5rem;
+  z-index: -1;
+}
+
+.section-title.glow {
+  text-shadow:
+    0 0 10px rgba(0, 240, 255, 0.4),
+    0 0 20px rgba(138, 43, 226, 0.3);
+}
+
+@keyframes titleReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

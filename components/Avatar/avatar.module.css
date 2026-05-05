@@ -1,0 +1,39 @@
+.avatar {
+  position: relative;
+  width: 380px;
+  height: 380px;
+}
+
+.face {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* OLHOS */
+.eyes {
+  position: absolute;
+  top: 22%;
+  left: 51%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 19px;
+}
+
+.eye {
+  width: 34px;
+  height: 34px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pupil {
+  width: 14px;
+  height: 14px;
+  background: black;
+  border-radius: 50%;
+  transition: transform 0.1s linear;
+}
