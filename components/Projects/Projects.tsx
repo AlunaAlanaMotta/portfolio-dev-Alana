@@ -1,368 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "./Projects.module.css";
 import PortfolioButton from "../PortfolioButton/PortfolioButton";
+import { projects } from "./projects.data";
 
-const projects = [
-  {
-    title: "Vitz Monitoramento",
-    description:
-      "Projeto desenvolvido como minha primeira experiência profissional na área, com foco em criação de um site institucional moderno, performático e orientado à conversão de clientes.",
-
-    details: (
-      <div className={styles.detailsContent}>
-        <p className={styles.intro}>
-          Este projeto marcou minha primeira experiência profissional como
-          desenvolvedora front-end, com foco em entregar uma solução real e
-          eficiente.
-        </p>
-
-        <div className={styles.highlights}>
-          <span>
-            <i className="fas fa-search"></i> SEO otimizado
-          </span>
-          <span>
-            <i className="fas fa-bolt"></i> Alta performance
-          </span>
-          <span>
-            <i className="fas fa-rocket"></i> Deploy em produção
-          </span>
-        </div>
-
-        <h4>
-          <i className="fas fa-code"></i> Tecnologias
-        </h4>
-        <div className={styles.techList}>
-          <span>Next.js</span>
-          <span>TypeScript</span>
-          <span>React Hooks</span>
-          <span>CSS Modules</span>
-        </div>
-
-        <h4>
-          <i className="fas fa-check-circle"></i> Entregas
-        </h4>
-        <ul>
-          <li>Refatoração completa do projeto</li>
-          <li>Melhoria de SEO e semântica</li>
-          <li>Deploy com domínio personalizado</li>
-          <li>Layout responsivo</li>
-        </ul>
-
-        <p className={styles.result}>
-          Esse projeto consolidou minha transição para a área de tecnologia.
-        </p>
-      </div>
-    ),
-
-    video: "/videos/video-site-vitz.mp4",
-    tech: ["Next.js", "TypeScript", "SEO", "UX/UI"],
-    demo: "https://vitzmonitoramento.vercel.app/",
-    code: "https://github.com/AlunaAlanaMotta/vitzmonitoramento",
-  },
-
-  {
-    title: "Site Institucional para Advogado",
-    description:
-      "Site institucional completo com formulário de captação de clientes integrado a banco de dados e envio automático de e-mail, desenvolvido com stack moderna.",
-
-    details: (
-      <div className={styles.detailsContent}>
-        <p className={styles.intro}>
-          Projeto autoral desenvolvido do zero, unindo design institucional
-          profissional com funcionalidades reais de back-end para captação de
-          clientes.
-        </p>
-
-        <div className={styles.highlights}>
-          <span>
-            <i className="fas fa-envelope"></i> Envio de e-mail automático
-          </span>
-          <span>
-            <i className="fas fa-database"></i> Banco de dados integrado
-          </span>
-          <span>
-            <i className="fas fa-rocket"></i> Deploy em produção
-          </span>
-        </div>
-
-        <h4>
-          <i className="fas fa-code"></i> Tecnologias
-        </h4>
-        <div className={styles.techList}>
-          <span>Next.js</span>
-          <span>TypeScript</span>
-          <span>Tailwind CSS</span>
-          <span>Supabase</span>
-          <span>Resend</span>
-        </div>
-
-        <h4>
-          <i className="fas fa-check-circle"></i> Funcionalidades
-        </h4>
-        <ul>
-          <li>Formulário de atendimento jurídico (legal intake)</li>
-          <li>Armazenamento dos dados no Supabase</li>
-          <li>Envio automático de e-mail via Resend</li>
-          <li>Layout responsivo e semântico</li>
-        </ul>
-
-        <p className={styles.result}>
-          Projeto que une front-end moderno com integrações reais de back-end,
-          entregando valor imediato ao cliente final.
-        </p>
-      </div>
-    ),
-
-    video: "/videos/advogado.mp4",
-    tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
-    demo: "https://advogado-inky-three.vercel.app/",
-    code: "https://github.com/AlunaAlanaMotta/advogado",
-  },
-
-  {
-    title: "Site Institucional para Clínica Odontológica",
-    description:
-      "Site institucional moderno para consultório odontológico com agendamento direto pelo WhatsApp, unindo apresentação profissional dos serviços e conversão de pacientes.",
-
-    details: (
-      <div className={styles.detailsContent}>
-        <p className={styles.intro}>
-          Projeto autoral desenvolvido para um consultório odontológico, unindo
-          identidade visual profissional com funcionalidades que facilitam o
-          contato e a conversão de novos pacientes.
-        </p>
-
-        <div className={styles.highlights}>
-          <span>
-            <i className="fab fa-whatsapp"></i> Agendamento via WhatsApp
-          </span>
-          <span>
-            <i className="fas fa-mobile-alt"></i> Layout responsivo
-          </span>
-          <span>
-            <i className="fas fa-rocket"></i> Deploy em produção
-          </span>
-        </div>
-
-        <h4>
-          <i className="fas fa-code"></i> Tecnologias
-        </h4>
-        <div className={styles.techList}>
-          <span>Next.js</span>
-          <span>TypeScript</span>
-          <span>CSS Modules</span>
-        </div>
-
-        <h4>
-          <i className="fas fa-check-circle"></i> Entregas
-        </h4>
-        <ul>
-          <li>Apresentação de serviços e especialidades</li>
-          <li>Botão de agendamento com redirecionamento direto ao WhatsApp</li>
-          <li>Design focado em transmitir confiança e profissionalismo</li>
-          <li>Layout semântico e acessível</li>
-          <li>Deploy em produção com domínio personalizado</li>
-        </ul>
-
-        <p className={styles.result}>
-          Projeto que demonstra minha capacidade de entregar soluções práticas e
-          orientadas à conversão, adaptadas às necessidades reais de cada
-          negócio.
-        </p>
-      </div>
-    ),
-
-    video: "/videos/odontologia.mp4",
-    tech: ["Next.js", "TypeScript", "CSS Modules"],
-    demo: "https://odontologia-delta.vercel.app/",
-    code: "https://github.com/AlunaAlanaMotta/odontologia",
-  },
-
-  {
-    title: "Landing Page para Personal Trainer",
-    description:
-      "Landing page completa para personal trainer com apresentação de planos, depoimentos, estudos de caso e agendamento direto pelo WhatsApp.",
-
-    details: (
-      <div className={styles.detailsContent}>
-        <p className={styles.intro}>
-          Projeto autoral desenvolvido para um profissional de educação física,
-          com foco em conversão de clientes e apresentação clara dos serviços
-          oferecidos.
-        </p>
-
-        <div className={styles.highlights}>
-          <span>
-            <i className="fab fa-whatsapp"></i> Agendamento via WhatsApp
-          </span>
-          <span>
-            <i className="fas fa-layer-group"></i> Múltiplas seções
-          </span>
-          <span>
-            <i className="fas fa-rocket"></i> Deploy em produção
-          </span>
-        </div>
-
-        <h4>
-          <i className="fas fa-code"></i> Tecnologias
-        </h4>
-        <div className={styles.techList}>
-          <span>Next.js</span>
-          <span>TypeScript</span>
-          <span>CSS Modules</span>
-        </div>
-
-        <h4>
-          <i className="fas fa-check-circle"></i> Funcionalidades
-        </h4>
-        <ul>
-          <li>Apresentação de planos: presencial, online e híbrido</li>
-          <li>Seção de depoimentos e transformações reais (antes/depois)</li>
-          <li>FAQ com perguntas frequentes</li>
-          <li>Método de treino em 4 etapas</li>
-          <li>Múltiplos botões de agendamento direto pelo WhatsApp</li>
-        </ul>
-
-        <p className={styles.result}>
-          Projeto orientado à conversão, mostrando como estruturar uma landing
-          page completa que guia o visitante até o contato com o profissional.
-        </p>
-      </div>
-    ),
-
-    video: "/videos/personal.mp4",
-    tech: ["Next.js", "TypeScript", "CSS Modules"],
-    demo: "https://personal-trainer-blush-zeta.vercel.app/",
-    code: "https://github.com/AlunaAlanaMotta/personal-trainer",
-  },
-
-  {
-    title: "Maison Noir — Estúdio de Beleza",
-    description:
-      "Landing page sofisticada para estúdio de beleza com galeria de transformações, tabela de serviços e agendamento direto pelo WhatsApp.",
-
-    details: (
-      <div className={styles.detailsContent}>
-        <p className={styles.intro}>
-          Projeto autoral com identidade visual forte e elegante, desenvolvido
-          para um estúdio de beleza exclusivo por agendamento.
-        </p>
-
-        <div className={styles.highlights}>
-          <span>
-            <i className="fab fa-whatsapp"></i> Agendamento via WhatsApp
-          </span>
-          <span>
-            <i className="fas fa-images"></i> Galeria de transformações
-          </span>
-          <span>
-            <i className="fas fa-rocket"></i> Deploy em produção
-          </span>
-        </div>
-
-        <h4>
-          <i className="fas fa-code"></i> Tecnologias
-        </h4>
-        <div className={styles.techList}>
-          <span>Next.js</span>
-          <span>TypeScript</span>
-          <span>CSS</span>
-        </div>
-
-        <h4>
-          <i className="fas fa-check-circle"></i> Funcionalidades
-        </h4>
-        <ul>
-          <li>
-            Apresentação de serviços com preços (corte, coloração, tratamento,
-            progressiva)
-          </li>
-          <li>Galeria de transformações antes/depois</li>
-          <li>Depoimentos de clientes</li>
-          <li>Informações de localização e horários</li>
-          <li>Agendamento direto pelo WhatsApp</li>
-        </ul>
-
-        <p className={styles.result}>
-          Projeto que une design sofisticado com estrutura orientada à
-          conversão, refletindo a identidade premium do estúdio.
-        </p>
-      </div>
-    ),
-
-    video: "/videos/salaoCabelo.mp4",
-    tech: ["Next.js", "TypeScript", "CSS"],
-    demo: "https://salao-maison-noir.vercel.app/",
-    code: "https://github.com/AlunaAlanaMotta/salao-maisonNoir",
-  },
-
-  {
-    title: "Belle Âme — Clínica de Estética",
-    description:
-      "Site institucional para clínica de estética com apresentação de tratamentos, diferenciais, depoimentos e agendamento direto pelo WhatsApp.",
-
-    details: (
-      <div className={styles.detailsContent}>
-        <p className={styles.intro}>
-          Projeto autoral desenvolvido para uma clínica de estética, com design
-          sofisticado e estrutura orientada à conversão de novos clientes.
-        </p>
-
-        <div className={styles.highlights}>
-          <span>
-            <i className="fab fa-whatsapp"></i> Agendamento via WhatsApp
-          </span>
-          <span>
-            <i className="fas fa-spa"></i> Segmento estética
-          </span>
-          <span>
-            <i className="fas fa-rocket"></i> Deploy em produção
-          </span>
-        </div>
-
-        <h4>
-          <i className="fas fa-code"></i> Tecnologias
-        </h4>
-        <div className={styles.techList}>
-          <span>Next.js</span>
-          <span>TypeScript</span>
-          <span>CSS</span>
-        </div>
-
-        <h4>
-          <i className="fas fa-check-circle"></i> Funcionalidades
-        </h4>
-        <ul>
-          <li>
-            Apresentação de tratamentos: facial, corporal, rejuvenescimento e
-            avançado
-          </li>
-          <li>Seção de diferenciais e proposta de valor</li>
-          <li>Depoimentos de clientes com avaliações</li>
-          <li>Estatísticas de credibilidade (8+ anos, 3k atendimentos)</li>
-          <li>Agendamento direto pelo WhatsApp</li>
-        </ul>
-
-        <p className={styles.result}>
-          Projeto que demonstra domínio em criar experiências visuais premium
-          alinhadas à identidade e ao público de cada marca.
-        </p>
-      </div>
-    ),
-
-    video: "/videos/estetica.mp4",
-    tech: ["Next.js", "TypeScript", "CSS"],
-    demo: "https://salao-estetica-belle-ame.vercel.app/",
-    code: "https://github.com/AlunaAlanaMotta/salao-estetica-Belle-Ame",
-  },
-];
+const particles = Array.from({ length: 26 }, (_, index) => ({
+  id: index,
+  left: `${(index * 37) % 100}%`,
+  top: `${(index * 53) % 100}%`,
+  depth: `${0.35 + (index % 7) * 0.12}`,
+  size: `${3 + (index % 4)}px`,
+  delay: `${(index % 8) * -0.7}s`,
+}));
 
 export default function Projects() {
   const [current, setCurrent] = useState(0);
+  const [transitionDirection, setTransitionDirection] = useState<
+    "forward" | "reverse"
+  >("forward");
   const [detailsIndex, setDetailsIndex] = useState<number | null>(null);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const project = projects[current];
   const detailsProject =
@@ -371,17 +30,63 @@ export default function Projects() {
 
   const openDetails = (index: number) => setDetailsIndex(index);
   const closeDetails = () => setDetailsIndex(null);
+  const selectProject = (index: number) => {
+    if (index === current) return;
+    setTransitionDirection(index > current ? "forward" : "reverse");
+    setCurrent(index);
+  };
 
+  const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    e.currentTarget.style.setProperty("--mouse-x", x.toFixed(3));
+    e.currentTarget.style.setProperty("--mouse-y", y.toFixed(3));
+  };
+
+  const handlePointerLeave = (e: React.PointerEvent<HTMLElement>) => {
+    e.currentTarget.style.setProperty("--mouse-x", "0");
+    e.currentTarget.style.setProperty("--mouse-y", "0");
+  };
+
+  // Close modal on Escape
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeDetails();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Lock body scroll when modal is open
   useEffect(() => {
     if (detailsIndex === null) return;
-
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-
     return () => {
       document.body.style.overflow = previousOverflow;
     };
   }, [detailsIndex]);
+
+  // Arrow key navigation between tabs
+  const handleTabKeyDown = (e: React.KeyboardEvent, index: number) => {
+    let next = index;
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+      next = (index + 1) % projects.length;
+    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+      next = (index - 1 + projects.length) % projects.length;
+    } else if (e.key === "Home") {
+      next = 0;
+    } else if (e.key === "End") {
+      next = projects.length - 1;
+    } else {
+      return;
+    }
+    e.preventDefault();
+    selectProject(next);
+    tabRefs.current[next]?.focus();
+  };
 
   const renderActions = (selectedProject: (typeof projects)[number]) => (
     <div className={styles.buttons}>
@@ -408,9 +113,30 @@ export default function Projects() {
   );
 
   return (
-    <section id="projetos" className={styles.projects}>
+    <section
+      id="projetos"
+      className={styles.projects}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+    >
       <div className={styles.controlGrid} aria-hidden="true" />
       <div className={styles.energyHalo} aria-hidden="true" />
+      <div className={styles.particleField} aria-hidden="true">
+        {particles.map((particle) => (
+          <span
+            key={particle.id}
+            style={
+              {
+                "--particle-left": particle.left,
+                "--particle-top": particle.top,
+                "--particle-depth": particle.depth,
+                "--particle-size": particle.size,
+                "--particle-delay": particle.delay,
+              } as React.CSSProperties
+            }
+          />
+        ))}
+      </div>
 
       <div className={styles.container}>
         <div className={styles.header}>
@@ -429,45 +155,71 @@ export default function Projects() {
         </div>
 
         <div className={`${styles.desktopExperience} reveal`} data-delay="200">
-          <div className={styles.projectList} aria-label="Lista de projetos">
+          <div
+            className={styles.projectList}
+            role="tablist"
+            aria-label="Lista de projetos"
+            aria-orientation="vertical"
+          >
             {projects.map((item, index) => (
               <button
                 key={item.title}
+                ref={(el) => {
+                  tabRefs.current[index] = el;
+                }}
+                id={`project-tab-${index}`}
+                role="tab"
+                aria-selected={current === index}
+                aria-controls={`project-panel-${index}`}
+                tabIndex={current === index ? 0 : -1}
                 className={`${styles.projectItem} ${
                   current === index ? styles.activeProject : ""
                 }`}
                 type="button"
-                onClick={() => setCurrent(index)}
+                onClick={() => selectProject(index)}
+                onKeyDown={(e) => handleTabKeyDown(e, index)}
               >
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{item.title}</strong>
+                <strong>{item.shortTitle}</strong>
                 <small>{item.tech.slice(0, 2).join(" + ")}</small>
               </button>
             ))}
           </div>
 
-          <article className={styles.featuredProject}>
-            <div className={styles.browserFrame}>
-              <div className={styles.browserBar} aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
+          <article
+            id={`project-panel-${current}`}
+            role="tabpanel"
+            aria-labelledby={`project-tab-${current}`}
+            className={styles.featuredProject}
+            data-direction={transitionDirection}
+          >
+            <div key={`scene-${current}`} className={styles.sceneStage}>
+              <div className={styles.browserFrame}>
+                <div className={styles.browserBar} aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span className={styles.browserUrl}>{project.url}</span>
+                </div>
+                <video
+                  key={project.video}
+                  src={project.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
               </div>
-              <video
-                key={project.video}
-                src={project.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-              />
             </div>
 
-            <div className={styles.projectInfo}>
-              <span className={styles.projectCount}>
-                {String(current + 1).padStart(2, "0")} /{" "}
-                {String(projects.length).padStart(2, "0")}
-              </span>
+            <div key={current} className={styles.projectInfo}>
+              <div className={styles.projectMeta}>
+                <span className={styles.projectCount}>
+                  {String(current + 1).padStart(2, "0")} /{" "}
+                  {String(projects.length).padStart(2, "0")}
+                </span>
+                <span className={styles.categoryBadge}>{project.category}</span>
+              </div>
               <h3>{project.title}</h3>
               <p>{project.description}</p>
 
@@ -494,12 +246,22 @@ export default function Projects() {
         <div className={styles.mobileProjects}>
           {projects.map((item, index) => (
             <article className={styles.mobileCard} key={item.title}>
-              <video src={item.video} muted playsInline preload="metadata" />
+              <video
+                src={item.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+              />
 
               <div className={styles.mobileCardBody}>
-                <span className={styles.projectCount}>
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                <div className={styles.projectMeta}>
+                  <span className={styles.projectCount}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className={styles.categoryBadge}>{item.category}</span>
+                </div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
 
@@ -540,6 +302,16 @@ export default function Projects() {
               >
                 ×
               </button>
+
+              <div className={styles.modalVideo}>
+                <video
+                  src={detailsProject.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              </div>
 
               <h3>{detailsProject.title}</h3>
 

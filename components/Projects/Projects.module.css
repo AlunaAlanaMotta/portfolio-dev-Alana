@@ -1,9 +1,12 @@
 .projects {
+  --mouse-x: 0;
+  --mouse-y: 0;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   padding: var(--spacing-xl);
-  overflow-x: clip;
+  overflow: hidden;
   position: relative;
   z-index: 2;
   isolation: isolate;
@@ -15,9 +18,14 @@
     0 -1px 0 rgba(0, 240, 255, 0.2);
   transform: translateZ(0);
   background:
+    radial-gradient(
+      circle at calc(50% + (var(--mouse-x) * 18%)) calc(46% + (var(--mouse-y) * 18%)),
+      rgba(0, 240, 255, 0.18),
+      transparent 30%
+    ),
     radial-gradient(circle at 50% -8%, rgba(0, 180, 255, 0.1), transparent 26%),
     radial-gradient(circle at 82% 18%, rgba(138, 43, 226, 0.12), transparent 28%),
-    linear-gradient(180deg, rgba(2, 4, 14, 0.96), rgba(3, 7, 18, 0.98));
+    linear-gradient(180deg, rgba(2, 4, 14, 0.98), rgba(3, 7, 18, 1));
 }
 
 .projects::before {
@@ -33,7 +41,8 @@
 }
 
 .controlGrid,
-.energyHalo {
+.energyHalo,
+.particleField {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -52,10 +61,54 @@
 .energyHalo {
   opacity: 0.75;
   background:
-    radial-gradient(ellipse at 62% 50%, rgba(0, 240, 255, 0.14), transparent 42%),
+    radial-gradient(
+      ellipse at calc(62% + (var(--mouse-x) * 9%)) calc(50% + (var(--mouse-y) * 9%)),
+      rgba(0, 240, 255, 0.16),
+      transparent 42%
+    ),
     conic-gradient(from 120deg at 62% 50%, transparent, rgba(0, 240, 255, 0.12), transparent 34%, rgba(138, 43, 226, 0.12), transparent 64%);
   filter: blur(18px);
   animation: haloBreathe 7s ease-in-out infinite alternate;
+}
+
+.particleField {
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particleField span {
+  position: absolute;
+  left: var(--particle-left);
+  top: var(--particle-top);
+  width: var(--particle-size);
+  height: var(--particle-size);
+  border-radius: 50%;
+  opacity: 0.72;
+  background: rgba(224, 252, 255, 0.88);
+  box-shadow:
+    0 0 12px rgba(0, 240, 255, 0.72),
+    0 0 28px rgba(138, 43, 226, 0.22);
+  transform: translate3d(
+    calc(var(--mouse-x) * var(--particle-depth) * 52px),
+    calc(var(--mouse-y) * var(--particle-depth) * 52px),
+    0
+  );
+  animation: particleDrift 8s ease-in-out infinite alternate;
+  animation-delay: var(--particle-delay);
+}
+
+.particleField span:nth-child(3n) {
+  background: rgba(171, 139, 255, 0.86);
+  box-shadow:
+    0 0 12px rgba(138, 43, 226, 0.68),
+    0 0 26px rgba(0, 240, 255, 0.18);
+}
+
+.particleField span:nth-child(4n) {
+  width: calc(var(--particle-size) + 5px);
+  height: 1px;
+  border-radius: 999px;
+  opacity: 0.45;
 }
 
 .container {
@@ -95,8 +148,8 @@
 
 .desktopExperience {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
-  gap: 28px;
+  grid-template-columns: minmax(240px, 290px) minmax(0, 1fr);
+  gap: clamp(22px, 3vw, 34px);
   align-items: stretch;
 }
 
@@ -157,6 +210,14 @@
   transform: translateX(6px);
 }
 
+.activeProject {
+  border-left: 3px solid var(--color-primary);
+  box-shadow:
+    0 0 28px rgba(0, 240, 255, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    -6px 0 18px rgba(0, 240, 255, 0.14);
+}
+
 .projectItem span {
   grid-row: span 2;
   color: var(--color-primary);
@@ -187,13 +248,16 @@
   border: 1px solid rgba(0, 240, 255, 0.2);
   border-radius: 22px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 32%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent 32%),
     radial-gradient(circle at 20% 20%, rgba(0, 240, 255, 0.11), transparent 32%),
-    rgba(2, 8, 18, 0.72);
+    linear-gradient(135deg, rgba(0, 240, 255, 0.08), transparent 48%),
+    rgba(2, 8, 18, 0.8);
   box-shadow:
-    0 28px 100px rgba(0, 0, 0, 0.42),
-    0 0 44px rgba(0, 240, 255, 0.06),
+    0 30px 110px rgba(0, 0, 0, 0.52),
+    0 0 64px rgba(0, 240, 255, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  perspective: 1200px;
+  backdrop-filter: blur(18px);
 }
 
 .featuredProject::before {
@@ -206,15 +270,19 @@
 }
 
 .featuredProject::after {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 2px;
-  left: 24px;
-  top: 24px;
-  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.82), transparent);
-  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.65));
-  animation: scannerLine 4.8s ease-in-out infinite;
+  content: none;
+}
+
+.sceneStage {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  transform-style: preserve-3d;
+  animation: sceneEnterForward 0.48s cubic-bezier(0.2, 0.82, 0.2, 1) both;
+}
+
+.featuredProject[data-direction="reverse"] .sceneStage {
+  animation-name: sceneEnterReverse;
 }
 
 .browserFrame {
@@ -227,6 +295,38 @@
   box-shadow:
     0 18px 60px rgba(0, 0, 0, 0.42),
     0 0 24px rgba(0, 240, 255, 0.08);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.browserFrame::before,
+.browserFrame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.browserFrame::before {
+  opacity: 0.16;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px) 0 0 / 100% 13px,
+    linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.18), transparent);
+  mix-blend-mode: screen;
+  animation: scanFlicker 0.42s steps(4, end) both;
+}
+
+.browserFrame::after {
+  background: radial-gradient(circle at center, transparent 48%, rgba(0, 0, 0, 0.44));
+}
+
+.browserFrame:hover {
+  transform: scale(1.015);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.52),
+    0 0 48px rgba(0, 240, 255, 0.18);
 }
 
 .browserBar {
@@ -246,10 +346,22 @@
   height: 8px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
 }
 
 .browserBar span:first-child {
   background: #00f0ff;
+}
+
+.browserUrl {
+  flex: 1;
+  margin-left: 10px;
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 0.7rem;
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .browserFrame video,
@@ -263,19 +375,54 @@
     #05070a;
 }
 
+.sceneStage .browserFrame video {
+  animation: videoAwake 0.48s cubic-bezier(0.2, 0.82, 0.2, 1) both;
+}
+
 .projectInfo {
   position: relative;
   z-index: 1;
   min-width: 0;
+  animation: contentEnter 0.42s cubic-bezier(0.2, 0.82, 0.2, 1) both;
+}
+
+@keyframes contentEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projectMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .projectCount {
   display: inline-flex;
-  margin-bottom: 12px;
   color: var(--color-primary);
   font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0.08em;
+}
+
+.categoryBadge {
+  display: inline-flex;
+  padding: 4px 10px;
+  border: 1px solid rgba(138, 43, 226, 0.5);
+  border-radius: 999px;
+  color: rgba(210, 190, 255, 0.9);
+  background: rgba(138, 43, 226, 0.1);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
 }
 
 .projectInfo h3,
@@ -432,6 +579,20 @@
   font-style: italic;
 }
 
+.modalVideo {
+  margin: -32px -32px 24px;
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.modalVideo video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -533,6 +694,59 @@
   }
 }
 
+@keyframes sceneEnterForward {
+  from {
+    opacity: 0;
+    transform: translateX(28px) translateZ(-36px) rotateY(-4deg) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) translateZ(0) rotateY(0deg) scale(1);
+  }
+}
+
+@keyframes sceneEnterReverse {
+  from {
+    opacity: 0;
+    transform: translateX(-28px) translateZ(-36px) rotateY(4deg) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) translateZ(0) rotateY(0deg) scale(1);
+  }
+}
+
+@keyframes videoAwake {
+  from {
+    opacity: 0.34;
+    transform: scale(1.08);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scanFlicker {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  18%,
+  52% {
+    opacity: 0.34;
+  }
+
+  34%,
+  70% {
+    opacity: 0.12;
+  }
+}
+
 @keyframes haloBreathe {
   from {
     opacity: 0.45;
@@ -545,21 +759,17 @@
   }
 }
 
-@keyframes scannerLine {
-  0%,
-  100% {
-    opacity: 0;
-    transform: translateX(-80px);
+@keyframes particleDrift {
+  from {
+    margin-top: -10px;
+    margin-left: -8px;
+    opacity: 0.38;
   }
 
-  35%,
-  65% {
-    opacity: 1;
-  }
-
-  80% {
-    opacity: 0;
-    transform: translateX(760px);
+  to {
+    margin-top: 12px;
+    margin-left: 10px;
+    opacity: 0.82;
   }
 }
 
@@ -587,6 +797,11 @@
     background-size: 48px 48px;
   }
 
+  .particleField span {
+    opacity: 0.42;
+    transform: none;
+  }
+
   .header {
     margin-bottom: 24px;
     padding-left: 0;
@@ -604,12 +819,31 @@
   }
 
   .mobileProjects {
-    display: grid;
-    gap: 22px;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 var(--spacing-lg);
+    gap: 16px;
+    padding-bottom: 16px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .mobileProjects::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobileCard {
+    flex: 0 0 min(84vw, 360px);
+    scroll-snap-align: start;
   }
 
   .mobileCardBody {
     text-align: center;
+  }
+
+  .projectMeta {
+    justify-content: center;
   }
 
   .mobileCardBody h3 {
@@ -653,6 +887,11 @@
     border-radius: 14px;
   }
 
+  .modalVideo {
+    margin: -26px -18px 20px;
+    border-radius: 14px 14px 0 0;
+  }
+
   .modalContent h3 {
     font-size: 1.45rem;
   }
@@ -670,5 +909,19 @@
   .projectButtonLink,
   .detailsButton {
     width: min(100%, 210px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featuredProject::after,
+  .sceneStage,
+  .sceneStage .browserFrame video,
+  .projectInfo,
+  .particleField span {
+    animation: none;
+  }
+
+  .particleField span {
+    transform: none;
   }
 }
