@@ -64,26 +64,27 @@ const projects = [
   },
 
   {
-    title: "Pokédex Interativa",
+    title: "Site Institucional para Advogado",
     description:
-      "Aplicação web interativa com consumo de API externa, exibindo dados dinâmicos em tempo real.",
+      "Site institucional completo com formulário de captação de clientes integrado a banco de dados e envio automático de e-mail, desenvolvido com stack moderna.",
 
     details: (
       <div className={styles.detailsContent}>
         <p className={styles.intro}>
-          Projeto desenvolvido com foco em integração com API externa,
-          permitindo consumir e exibir dados dinâmicos de forma organizada.
+          Projeto autoral desenvolvido do zero, unindo design institucional
+          profissional com funcionalidades reais de back-end para captação de
+          clientes.
         </p>
 
         <div className={styles.highlights}>
           <span>
-            <i className="fas fa-database"></i> Consumo de API
+            <i className="fas fa-envelope"></i> Envio de e-mail automático
           </span>
           <span>
-            <i className="fas fa-sync"></i> Dados dinâmicos
+            <i className="fas fa-database"></i> Banco de dados integrado
           </span>
           <span>
-            <i className="fas fa-bolt"></i> Interface rápida
+            <i className="fas fa-rocket"></i> Deploy em produção
           </span>
         </div>
 
@@ -91,60 +92,58 @@ const projects = [
           <i className="fas fa-code"></i> Tecnologias
         </h4>
         <div className={styles.techList}>
-          <span>JavaScript</span>
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>API REST</span>
+          <span>Next.js</span>
+          <span>TypeScript</span>
+          <span>Tailwind CSS</span>
+          <span>Supabase</span>
+          <span>Resend</span>
         </div>
 
         <h4>
           <i className="fas fa-check-circle"></i> Funcionalidades
         </h4>
         <ul>
-          <li>Consumo da PokeAPI</li>
-          <li>Renderização dinâmica</li>
-          <li>Interface interativa</li>
+          <li>Formulário de atendimento jurídico (legal intake)</li>
+          <li>Armazenamento dos dados no Supabase</li>
+          <li>Envio automático de e-mail via Resend</li>
+          <li>Layout responsivo e semântico</li>
         </ul>
 
         <p className={styles.result}>
-          Esse projeto fortaleceu minhas habilidades em integração com APIs.
+          Projeto que une front-end moderno com integrações reais de back-end,
+          entregando valor imediato ao cliente final.
         </p>
       </div>
     ),
 
-    video: "/videos/video-pokedex.mp4",
-    tech: ["JavaScript", "API", "UI"],
-    demo: "https://desafio-dio-poke-api.vercel.app/",
-    code: "https://github.com/AlunaAlanaMotta/desafio-dio-poke-api",
+    video: "/videos/advogado.mp4",
+    tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
+    demo: "https://advogado-inky-three.vercel.app/",
+    code: "https://github.com/AlunaAlanaMotta/advogado",
   },
 
   {
-    title: "AluraFlix (CRUD)",
+    title: "Site Institucional para Clínica Odontológica",
     description:
-      "Aplicação estilo streaming com organização por categorias e funcionalidades CRUD para gerenciamento de conteúdo.",
+      "Site institucional moderno para consultório odontológico com agendamento direto pelo WhatsApp, unindo apresentação profissional dos serviços e conversão de pacientes.",
 
     details: (
       <div className={styles.detailsContent}>
         <p className={styles.intro}>
-          Aplicação inspirada em plataformas de streaming, com foco em
-          componentização e manipulação de dados.
-        </p>
-
-        <p>
-          Desenvolvi funcionalidades de gerenciamento de conteúdo utilizando
-          conceitos de CRUD, permitindo interação completa com os dados na
-          interface.
+          Projeto autoral desenvolvido para um consultório odontológico, unindo
+          identidade visual profissional com funcionalidades que facilitam o
+          contato e a conversão de novos pacientes.
         </p>
 
         <div className={styles.highlights}>
           <span>
-            <i className="fas fa-layer-group"></i> Componentização
+            <i className="fab fa-whatsapp"></i> Agendamento via WhatsApp
           </span>
           <span>
-            <i className="fas fa-database"></i> CRUD completo
+            <i className="fas fa-mobile-alt"></i> Layout responsivo
           </span>
           <span>
-            <i className="fas fa-film"></i> Interface streaming
+            <i className="fas fa-rocket"></i> Deploy em produção
           </span>
         </div>
 
@@ -152,62 +151,58 @@ const projects = [
           <i className="fas fa-code"></i> Tecnologias
         </h4>
         <div className={styles.techList}>
-          <span>React</span>
-          <span>JavaScript</span>
-          <span>CSS</span>
+          <span>Next.js</span>
+          <span>TypeScript</span>
+          <span>CSS Modules</span>
         </div>
 
         <h4>
-          <i className="fas fa-database"></i> Funcionalidades
+          <i className="fas fa-check-circle"></i> Entregas
         </h4>
         <ul>
-          <li>Cadastro de vídeos (Create)</li>
-          <li>Listagem dinâmica (Read)</li>
-          <li>Edição de dados (Update)</li>
-          <li>Remoção de conteúdo (Delete)</li>
+          <li>Apresentação de serviços e especialidades</li>
+          <li>Botão de agendamento com redirecionamento direto ao WhatsApp</li>
+          <li>Design focado em transmitir confiança e profissionalismo</li>
+          <li>Layout semântico e acessível</li>
+          <li>Deploy em produção com domínio personalizado</li>
         </ul>
 
         <p className={styles.result}>
-          Esse projeto reforçou minha capacidade de trabalhar com estado e
-          lógica de aplicação.
+          Projeto que demonstra minha capacidade de entregar soluções práticas e
+          orientadas à conversão, adaptadas às necessidades reais de cada
+          negócio.
         </p>
       </div>
     ),
 
-    video: "/videos/video-aluraflix.mp4",
-    tech: ["React", "CRUD", "State"],
-    demo: "https://alura-flix-swart-nine.vercel.app/",
-    code: "#",
+    video: "/videos/odontologia.mp4",
+    tech: ["Next.js", "TypeScript", "CSS Modules"],
+    demo: "https://odontologia-delta.vercel.app/",
+    code: "https://github.com/AlunaAlanaMotta/odontologia",
   },
 
   {
-    title: "Portfólio Inicial (Figma → Código)",
+    title: "Landing Page para Personal Trainer",
     description:
-      "Projeto focado na conversão de layout do Figma para código, marcando o início da minha jornada como desenvolvedora front-end.",
+      "Landing page completa para personal trainer com apresentação de planos, depoimentos, estudos de caso e agendamento direto pelo WhatsApp.",
 
     details: (
       <div className={styles.detailsContent}>
         <p className={styles.intro}>
-          Este foi um dos primeiros projetos que desenvolvi na área de
-          front-end, e representa um momento muito importante da minha
-          trajetória.
-        </p>
-
-        <p>
-          Foi a primeira vez que consegui transformar um layout do Figma em
-          código, entendendo na prática como estruturar uma interface real e
-          funcional.
+          Projeto autoral desenvolvido para um profissional de educação física,
+          com foco em conversão de clientes e apresentação clara dos serviços
+          oferecidos.
         </p>
 
         <div className={styles.highlights}>
           <span>
-            <i className="fas fa-pencil-ruler"></i> Figma → Código
+            <i className="fab fa-whatsapp"></i> Agendamento via WhatsApp
           </span>
           <span>
-            <i className="fas fa-mobile-alt"></i> Responsivo
+            <i className="fas fa-layer-group"></i> Múltiplas seções
           </span>
           <span>
-            <i className="fas fa-layer-group"></i> Estrutura semântica
+            <i className="fas fa-rocket"></i> Deploy em produção
           </span>
         </div>
 
@@ -215,66 +210,56 @@ const projects = [
           <i className="fas fa-code"></i> Tecnologias
         </h4>
         <div className={styles.techList}>
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>JavaScript</span>
+          <span>Next.js</span>
+          <span>TypeScript</span>
+          <span>CSS Modules</span>
         </div>
 
         <h4>
-          <i className="fas fa-chart-line"></i> Evolução
+          <i className="fas fa-check-circle"></i> Funcionalidades
         </h4>
         <ul>
-          <li>Primeiro contato com conversão de layout (Figma → código)</li>
-          <li>Aprendizado de responsividade</li>
-          <li>Organização de estilos CSS</li>
-          <li>Base de estruturação HTML semântica</li>
+          <li>Apresentação de planos: presencial, online e híbrido</li>
+          <li>Seção de depoimentos e transformações reais (antes/depois)</li>
+          <li>FAQ com perguntas frequentes</li>
+          <li>Método de treino em 4 etapas</li>
+          <li>Múltiplos botões de agendamento direto pelo WhatsApp</li>
         </ul>
 
         <p className={styles.result}>
-          Hoje, olhando para esse projeto, consigo enxergar claramente minha
-          evolução, desde os primeiros passos até projetos mais completos e
-          profissionais que desenvolvi depois.
-        </p>
-        <p className={styles.evolutionHighlight}>
-          Este projeto representa o início da minha evolução como
-          desenvolvedora.
+          Projeto orientado à conversão, mostrando como estruturar uma landing
+          page completa que guia o visitante até o contato com o profissional.
         </p>
       </div>
     ),
 
-    video: "/videos/video-portfolio.mp4", //
-    tech: ["HTML", "CSS", "JavaScript", "Figma"],
-    demo: "https://portfolio-alana.vercel.app/",
-    code: "#",
+    video: "/videos/personal.mp4",
+    tech: ["Next.js", "TypeScript", "CSS Modules"],
+    demo: "https://personal-trainer-blush-zeta.vercel.app/",
+    code: "https://github.com/AlunaAlanaMotta/personal-trainer",
   },
 
   {
-    title: "Temporizador Interativo",
+    title: "Maison Noir — Estúdio de Beleza",
     description:
-      "Aplicação web interativa focada em experiência do usuário, com controle de tempo, estados e feedback visual dinâmico.",
+      "Landing page sofisticada para estúdio de beleza com galeria de transformações, tabela de serviços e agendamento direto pelo WhatsApp.",
 
     details: (
       <div className={styles.detailsContent}>
         <p className={styles.intro}>
-          Projeto desenvolvido com foco em interação e experiência do usuário,
-          explorando manipulação de tempo e comportamento dinâmico da interface.
-        </p>
-
-        <p>
-          A aplicação permite controlar ciclos de tempo de forma intuitiva, com
-          feedback visual em tempo real e transições suaves, reforçando a
-          usabilidade e a clareza das ações do usuário.
+          Projeto autoral com identidade visual forte e elegante, desenvolvido
+          para um estúdio de beleza exclusivo por agendamento.
         </p>
 
         <div className={styles.highlights}>
           <span>
-            <i className="fas fa-clock"></i> Controle de tempo
+            <i className="fab fa-whatsapp"></i> Agendamento via WhatsApp
           </span>
           <span>
-            <i className="fas fa-bolt"></i> Interação em tempo real
+            <i className="fas fa-images"></i> Galeria de transformações
           </span>
           <span>
-            <i className="fas fa-mouse-pointer"></i> UX intuitiva
+            <i className="fas fa-rocket"></i> Deploy em produção
           </span>
         </div>
 
@@ -282,32 +267,96 @@ const projects = [
           <i className="fas fa-code"></i> Tecnologias
         </h4>
         <div className={styles.techList}>
-          <span>JavaScript</span>
-          <span>HTML</span>
+          <span>Next.js</span>
+          <span>TypeScript</span>
           <span>CSS</span>
         </div>
 
         <h4>
-          <i className="fas fa-cogs"></i> Funcionalidades
+          <i className="fas fa-check-circle"></i> Funcionalidades
         </h4>
         <ul>
-          <li>Contagem regressiva com controle de tempo</li>
-          <li>Manipulação de estados da aplicação</li>
-          <li>Feedback visual dinâmico</li>
-          <li>Interações em tempo real com o usuário</li>
+          <li>
+            Apresentação de serviços com preços (corte, coloração, tratamento,
+            progressiva)
+          </li>
+          <li>Galeria de transformações antes/depois</li>
+          <li>Depoimentos de clientes</li>
+          <li>Informações de localização e horários</li>
+          <li>Agendamento direto pelo WhatsApp</li>
         </ul>
 
         <p className={styles.result}>
-          Esse projeto fortaleceu minha habilidade em criar interfaces
-          interativas e melhorar a experiência do usuário com JavaScript.
+          Projeto que une design sofisticado com estrutura orientada à
+          conversão, refletindo a identidade premium do estúdio.
         </p>
       </div>
     ),
 
-    video: "/videos/video-tempo.mp4", //
-    tech: ["JavaScript", "UX", "UI", "Interação"],
-    demo: "https://temporizador-alura.vercel.app/",
-    code: "#",
+    video: "/videos/salaoCabelo.mp4",
+    tech: ["Next.js", "TypeScript", "CSS"],
+    demo: "https://salao-maison-noir.vercel.app/",
+    code: "https://github.com/AlunaAlanaMotta/salao-maisonNoir",
+  },
+
+  {
+    title: "Belle Âme — Clínica de Estética",
+    description:
+      "Site institucional para clínica de estética com apresentação de tratamentos, diferenciais, depoimentos e agendamento direto pelo WhatsApp.",
+
+    details: (
+      <div className={styles.detailsContent}>
+        <p className={styles.intro}>
+          Projeto autoral desenvolvido para uma clínica de estética, com design
+          sofisticado e estrutura orientada à conversão de novos clientes.
+        </p>
+
+        <div className={styles.highlights}>
+          <span>
+            <i className="fab fa-whatsapp"></i> Agendamento via WhatsApp
+          </span>
+          <span>
+            <i className="fas fa-spa"></i> Segmento estética
+          </span>
+          <span>
+            <i className="fas fa-rocket"></i> Deploy em produção
+          </span>
+        </div>
+
+        <h4>
+          <i className="fas fa-code"></i> Tecnologias
+        </h4>
+        <div className={styles.techList}>
+          <span>Next.js</span>
+          <span>TypeScript</span>
+          <span>CSS</span>
+        </div>
+
+        <h4>
+          <i className="fas fa-check-circle"></i> Funcionalidades
+        </h4>
+        <ul>
+          <li>
+            Apresentação de tratamentos: facial, corporal, rejuvenescimento e
+            avançado
+          </li>
+          <li>Seção de diferenciais e proposta de valor</li>
+          <li>Depoimentos de clientes com avaliações</li>
+          <li>Estatísticas de credibilidade (8+ anos, 3k atendimentos)</li>
+          <li>Agendamento direto pelo WhatsApp</li>
+        </ul>
+
+        <p className={styles.result}>
+          Projeto que demonstra domínio em criar experiências visuais premium
+          alinhadas à identidade e ao público de cada marca.
+        </p>
+      </div>
+    ),
+
+    video: "/videos/estetica.mp4",
+    tech: ["Next.js", "TypeScript", "CSS"],
+    demo: "https://salao-estetica-belle-ame.vercel.app/",
+    code: "https://github.com/AlunaAlanaMotta/salao-estetica-Belle-Ame",
   },
 ];
 
@@ -317,7 +366,7 @@ export default function Projects() {
 
   const project = projects[current];
   const detailsProject =
-    detailsIndex === null ? null : projects[detailsIndex] ?? null;
+    detailsIndex === null ? null : (projects[detailsIndex] ?? null);
   const modalRoot = typeof document === "undefined" ? null : document.body;
 
   const openDetails = (index: number) => setDetailsIndex(index);
@@ -478,25 +527,27 @@ export default function Projects() {
       {modalRoot &&
         detailsProject &&
         createPortal(
-        <div className={styles.modalOverlay} onClick={closeDetails}>
-          <div
-            className={styles.modalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className={styles.closeButton}
-              type="button"
-              onClick={closeDetails}
-              aria-label="Fechar detalhes"
+          <div className={styles.modalOverlay} onClick={closeDetails}>
+            <div
+              className={styles.modalContent}
+              onClick={(e) => e.stopPropagation()}
             >
-              ×
-            </button>
+              <button
+                className={styles.closeButton}
+                type="button"
+                onClick={closeDetails}
+                aria-label="Fechar detalhes"
+              >
+                ×
+              </button>
 
-            <h3>{detailsProject.title}</h3>
+              <h3>{detailsProject.title}</h3>
 
-            <div className={styles.modalDetails}>{detailsProject.details}</div>
-          </div>
-        </div>,
+              <div className={styles.modalDetails}>
+                {detailsProject.details}
+              </div>
+            </div>
+          </div>,
           document.body,
         )}
     </section>

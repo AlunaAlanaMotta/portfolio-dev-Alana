@@ -12,7 +12,9 @@ const footerLinks = [
   { label: "Home", href: "/" },
   { label: "Sobre", href: "/about" },
   { label: "Projetos", href: "/#projetos" },
-  { label: "Skills", href: "/#skills" },
+  { label: "Skills", href: "/skills" },
+  { label: "Trajetória", href: "/academicJourney" },
+  { label: "Contato", href: "/contact" },
 ];
 
 const socialLinks = [

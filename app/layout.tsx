@@ -16,8 +16,12 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Alana Motta | Portfólio",
-  description: "Portfólio de Alana Motta, desenvolvedora front-end.",
+  title: {
+    template: "%s | Alana Motta",
+    default: "Alana Motta | Desenvolvedora Front-End",
+  },
+  description:
+    "Portfólio de Alana Motta — desenvolvedora front-end especializada em React, Next.js e TypeScript. Interfaces modernas, responsivas e orientadas à experiência do usuário.",
 };
 
 export default function RootLayout({

@@ -26,6 +26,11 @@ export default function Hero() {
             detalhes vivos e código com intenção.
           </p>
 
+          <p className={styles.availability}>
+            <span className={styles.availabilityDot} aria-hidden="true" />
+            Disponível para CLT/PJ · Curitiba e remoto
+          </p>
+
           <div className={styles.specialties} aria-label="Especialidades">
             {specialties.map((specialty) => (
               <span key={specialty}>{specialty}</span>

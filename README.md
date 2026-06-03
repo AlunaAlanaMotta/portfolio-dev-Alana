@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfólio — Alana Motta
 
-## Getting Started
+Portfólio pessoal desenvolvido do zero com Next.js 16, TypeScript e CSS Modules. Apresenta projetos autorais, stack técnica, trajetória acadêmica e canais de contato.
 
-First, run the development server:
+**[→ Ver online](https://portfolio-dev-alana.vercel.app)**
+
+---
+
+## Stack
+
+| Camada | Tecnologia |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Linguagem | TypeScript 5 |
+| Estilo | CSS Modules + Tailwind CSS 4 |
+| UI / Ícones | React Icons 5, Lucide React |
+| 3D | Three.js + React Three Fiber + Drei |
+| Fontes | Space Grotesk + Geist (next/font) |
+| Deploy | Vercel |
+
+---
+
+## Páginas
+
+| Rota | Descrição |
+|---|---|
+| `/` | Hero, vitrine de projetos |
+| `/about` | Trajetória pessoal e interesses |
+| `/skills` | Stack técnica com painel interativo |
+| `/academicJourney` | Formação e cursos |
+| `/contact` | Formulário e redes sociais |
+
+---
+
+## Rodando localmente
 
 ```bash
+# instalar dependências
+npm install
+
+# iniciar servidor de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# build de produção
+npm run build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# iniciar em modo produção
+npm start
 
-## Learn More
+# lint
+npm run lint
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Estrutura
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+app/                  # rotas (App Router)
+  about/
+  academicJourney/
+  contact/
+  skills/
+  opengraph-image.tsx # og:image gerado via next/og
+  sitemap.ts
+  robots.ts
+components/           # componentes por feature
+  Hero/
+  Projects/
+  Skills/
+  Footer/
+  Navbar/
+  ...
+public/
+  images/
+  videos/             # demos dos projetos
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Projetos em destaque
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Vitz Monitoramento** — site institucional em produção (Next.js, TypeScript, SEO)
+- **Site para Advogado** — formulário jurídico com Supabase + Resend
+- **Clínica Odontológica** — agendamento via WhatsApp
+- **Personal Trainer** — landing page com planos e depoimentos
+- **Maison Noir** — estúdio de beleza com galeria de transformações
+- **Belle Âme** — clínica de estética com foco em conversão
+
+---
+
+## Contato
+
+- LinkedIn: [alana-motta-da-cruz-dev](https://www.linkedin.com/in/alana-motta-da-cruz-dev/)
+- GitHub: [AlunaAlanaMotta](https://github.com/AlunaAlanaMotta)
+- Email: mottaalana0@gmail.com

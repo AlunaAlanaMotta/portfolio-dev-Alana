@@ -156,7 +156,7 @@ export default function AboutPage() {
                 className={styles.cardImage}
               />
 
-              <div className={styles.overlay}>
+              <div className={styles.overlay} aria-hidden="true">
                 <span>Inspiração criativa</span>
                 <h3>Séries e filmes</h3>
               </div>
@@ -180,7 +180,7 @@ export default function AboutPage() {
                 className={styles.cardImage}
               />
 
-              <div className={styles.overlay}>
+              <div className={styles.overlay} aria-hidden="true">
                 <span>Descoberta e aprendizado</span>
                 <h3>Viagens</h3>
               </div>
@@ -204,7 +204,7 @@ export default function AboutPage() {
                 className={styles.cardImage}
               />
 
-              <div className={styles.overlay}>
+              <div className={styles.overlay} aria-hidden="true">
                 <span>Manual e artesanato</span>
                 <h3>Crochê e criatividade</h3>
               </div>
@@ -228,7 +228,7 @@ export default function AboutPage() {
                 className={styles.cardImage}
               />
 
-              <div className={styles.overlay}>
+              <div className={styles.overlay} aria-hidden="true">
                 <span>Estética e composição</span>
                 <h3>Decoração</h3>
               </div>
@@ -252,7 +252,7 @@ export default function AboutPage() {
                 className={styles.cardImage}
               />
 
-              <div className={styles.overlay}>
+              <div className={styles.overlay} aria-hidden="true">
                 <span>História, mente e universo</span>
                 <h3>Podcasts e curiosidades</h3>
               </div>

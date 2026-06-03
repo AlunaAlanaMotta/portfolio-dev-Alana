@@ -2,15 +2,21 @@
 
 import styles from "./Skills.module.css";
 import type { IconType } from "react-icons";
+import { FaChartBar, FaDatabase } from "react-icons/fa";
 import {
   SiCss,
   SiFigma,
+  SiFramer,
   SiGithub,
   SiHtml5,
   SiJavascript,
+  SiMysql,
   SiNextdotjs,
+  SiPython,
   SiReact,
+  SiSass,
   SiTypescript,
+  SiVercel,
 } from "react-icons/si";
 
 type Skill = {
@@ -56,7 +62,7 @@ const supportSkills: Skill[] = [
   },
   {
     name: "CSS3",
-    label: "Responsividade",
+    label: "Responsividade & CSS Modules",
     Icon: SiCss,
     className: "css",
   },
@@ -71,6 +77,51 @@ const supportSkills: Skill[] = [
     label: "Versionamento",
     Icon: SiGithub,
     className: "github",
+  },
+  {
+    name: "SASS",
+    label: "Estilo avançado",
+    Icon: SiSass,
+    className: "sass",
+  },
+  {
+    name: "Vercel",
+    label: "Deploy & hospedagem",
+    Icon: SiVercel,
+    className: "vercel",
+  },
+  {
+    name: "Framer Motion",
+    label: "Animações & transições",
+    Icon: SiFramer,
+    className: "framer",
+  },
+];
+
+const dataSkills: Skill[] = [
+  {
+    name: "SQL Server",
+    label: "Banco de dados relacional",
+    Icon: FaDatabase,
+    className: "sqlserver",
+  },
+  {
+    name: "MySQL",
+    label: "Banco de dados relacional",
+    Icon: SiMysql,
+    className: "mysql",
+  },
+  {
+    name: "Python",
+    label: "Scripts & automação",
+    Icon: SiPython,
+    className: "python",
+  },
+  {
+    name: "Power BI",
+    label: "Visualização de dados",
+    Icon: FaChartBar,
+    className: "powerbi",
   },
 ];
 
@@ -147,6 +198,32 @@ export default function Skills() {
               ))}
             </div>
           </aside>
+        </div>
+
+        <div className={styles.toolsPanel}>
+          <div className={styles.panelHeader}>
+            <span>Dados & Ferramentas</span>
+            <p>Bancos de dados, linguagens e visualização de dados.</p>
+          </div>
+          <div className={styles.toolsGrid}>
+            {dataSkills.map(({ name, label, Icon, className }, index) => (
+              <article
+                key={name}
+                className={`${styles.supportCard} ${styles[className]}`}
+                style={
+                  { "--delay": `${index * 0.08}s` } as React.CSSProperties
+                }
+              >
+                <div className={styles.icon}>
+                  <Icon />
+                </div>
+                <div>
+                  <h3>{name}</h3>
+                  <p>{label}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
